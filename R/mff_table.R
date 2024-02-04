@@ -12,7 +12,6 @@
 #' @importFrom officer fp_border
 #'
 #' @export
-bottom_border <- officer::fp_border(color = "#13334c", style = "solid", width = 2)
 
 mff_table <- function(.data) {
 
@@ -31,7 +30,10 @@ mff_table <- function(.data) {
     flextable::color(part = "header", color = "white") |>
     flextable::font(fontname = "Source Sans Pro", part = "all") |>
     flextable::height_all(part = "all", height = 10) |>
-    flextable:: hline_bottom(part = "body", border = bottom_border) |>
+    flextable:: hline_bottom(part = "body",
+                             border = officer::fp_border(color = "#13334c",
+                                                         style = "solid",
+                                                         width = 2)) |>
     flextable:: width(j = 1,
           width = 4) |>
     flextable:: width(j = 2:number_of_variables,
