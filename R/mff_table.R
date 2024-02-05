@@ -6,10 +6,6 @@
 #'
 #' @return A flextable object.
 #'
-#' @examples
-#' examples go here.
-#'
-#' @importFrom officer fp_border
 #'
 #' @export
 

@@ -1,7 +1,7 @@
 Package: ctlr
 Type: Package
 Title: Streamlined Cleaning, Analysis, and Visualization Tools
-Version: 0.1.1
+Version: 0.1.2
 Author: Jay Cutler
 Maintainer: Jay Cutler <jacobmcutler@outlook.com>
 Description: I'll ensure a longer description goes here eventually.
@@ -9,4 +9,9 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    flextable
+    dplyr,
+    flextable,
+    officer,
+    scales,
+    tidyr
+RoxygenNote: 7.3.1
