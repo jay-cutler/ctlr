@@ -8,10 +8,15 @@
 #'
 #' @return A data frame.
 #'
-#' @examples
-#' df <- tibble::tibble(id = 1:3, a = c("a", NA_character_, NA_character_), b = c(NA_character_, "b", "b"), c = c("c", NA_character_, "c"))
+#' @importFrom tibble tibble
 #'
-#' pct_over_100(df)
+#' @examples
+#' df <- tibble::tibble(id = 1:3,
+#' a = c("a", NA_character_, NA_character_),
+#' b = c(NA_character_, "b", "b"),
+#' c = c("c", NA_character_, "c"))
+#'
+#' pct_over_100(df, a:c)
 #'
 #'
 #' @export
@@ -27,5 +32,6 @@ pct_over_100 <- function(.data, .cols, id = "id") {
     dplyr::mutate(respondents = dplyr::n_distinct(id)) |>
     dplyr::count(value, respondents) |>
     dplyr::mutate(pct = n / respondents) |>
-    dplyr::mutate(pct_formatted = scales::percent(pct, accuracy = 1))
+    dplyr::mutate(pct_formatted = scales::percent(pct, accuracy = 1)) |>
+    dplyr::select(-respondents)
 }
