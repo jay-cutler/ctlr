@@ -9,7 +9,8 @@ comparison_table(
   comparison_variable,
   new_name = NULL,
   time_point = "fy",
-  cap_times = TRUE
+  cap_times = TRUE,
+  data_format = "n_pct"
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ comparison_table(
 \item{time_point}{Name of time point variable in dataset. Defaults to "fy".}
 
 \item{cap_times}{Do you want to force the time point columns to be renamed as all caps (T/F)? Defaults to TRUE.}
+
+\item{data_format}{Format of data presented in table. Can be one of "n" (only display n), "pct" (only display percent), or "n_pct" (display both n and percent; default).}
 }
 \value{
 A data frame.
