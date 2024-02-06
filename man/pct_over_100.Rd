@@ -15,17 +15,14 @@ pct_over_100(.data, .cols, id = "id")
 }
 \value{
 A data frame.
-}
-\description{
-Produces a table with your variable of interest, n, and percentages where multiple columns are pivoted longer and there may be more than one option (column) per row/respondent ID.
-}
-\examples{
+
 df <- tibble::tibble(id = 1:3,
 a = c("a", NA_character_, NA_character_),
 b = c(NA_character_, "b", "b"),
 c = c("c", NA_character_, "c"))
 
 pct_over_100(df, a:c)
-
-
+}
+\description{
+Produces a table with your variable of interest, n, and percentages where multiple columns are pivoted longer and there may be more than one option (column) per row/respondent ID.
 }
