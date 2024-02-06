@@ -8,6 +8,11 @@
 #'
 #' @return A data frame.
 #'
+#' @examples
+#' df <- tibble::tibble(id = 1:3, a = c("a", NA_character_, NA_character_), b = c(NA_character_, "b", "b"), c = c("c", NA_character_, "c"))
+#'
+#' pct_over_100(df)
+#'
 #'
 #' @export
 pct_over_100 <- function(.data, .cols, id = "id") {
