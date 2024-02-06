@@ -1,7 +1,7 @@
 Package: ctlr
 Type: Package
 Title: Streamlined Cleaning, Analysis, and Visualization Tools
-Version: 0.1.4
+Version: 0.1.5
 Author: Jay Cutler
 Maintainer: Jay Cutler <jacobmcutler@outlook.com>
 Description: I'll ensure a longer description goes here eventually.
@@ -14,6 +14,8 @@ Imports:
     boxr,
     dplyr,
     flextable,
+    ggplot2,
+    grDevices,
     janitor,
     officer,
     qualtRics,
