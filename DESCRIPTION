@@ -1,7 +1,7 @@
 Package: ctlr
 Type: Package
 Title: Streamlined Cleaning, Analysis, and Visualization Tools
-Version: 0.1.5
+Version: 0.1.6
 Author: Jay Cutler
 Maintainer: Jay Cutler <jacobmcutler@outlook.com>
 Description: I'll ensure a longer description goes here eventually.

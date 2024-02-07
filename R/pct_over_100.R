@@ -19,16 +19,25 @@
 #' @export
 pct_over_100 <- function(.data, .cols, id = "id") {
 
-  .data |>
+  n_respondents <- .data |>
     dplyr::select(id, {{ .cols }}) |>
     tidyr::pivot_longer(
       -id
     ) |>
     tidyr::drop_na(value) |>
     dplyr::select(-name) |>
-    dplyr::mutate(respondents = dplyr::n_distinct(id)) |>
-    dplyr::count(value, respondents) |>
-    dplyr::mutate(pct = n / respondents) |>
-    dplyr::mutate(pct_formatted = scales::percent(pct, accuracy = 1)) |>
+    dplyr::summarize(respondents = dplyr::n_distinct(id)) |>
+    dplyr::pull()
+
+  .data |>
+    dplyr::select(id, {{ .cols }}) |>
+    tidyr::pivot_longer(
+      -id
+    ) |>
+    tidyr::drop_na(value) |>
+    dplyr::count(value) |>
+    dplyr::mutate(respondents = n_respondents) |>
+    dplyr::mutate(percent = n / respondents) |>
+    dplyr::mutate(percent = scales::percent(percent, accuracy = 1)) |>
     dplyr::select(-respondents)
 }

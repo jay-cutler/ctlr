@@ -4,7 +4,7 @@
 \alias{frequency_table}
 \title{Generate a basic table with n and percent.}
 \usage{
-frequency_table(.data, frequency_variable, ordering)
+frequency_table(.data, frequency_variable, ordering = "pct")
 }
 \arguments{
 \item{.data}{The data frame.}
@@ -14,7 +14,7 @@ frequency_table(.data, frequency_variable, ordering)
 \item{ordering}{Choose to order data from greatest to lowest percent ("pct") or by factor order ("fct"). Defaults to "pct". (Note: if there are no factor levels set and "fct" is selected, data will arrange variable of choice in alphabetical order.)}
 }
 \value{
-A tabyl.
+A data frame.
 }
 \description{
 Produces a tabyl with n and percent for a given variable. Excludes NAs and by default will order data from highest to lowest percent

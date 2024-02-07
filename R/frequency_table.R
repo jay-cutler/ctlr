@@ -6,31 +6,34 @@
 #' @param frequency_variable Variable of interest.
 #' @param ordering Choose to order data from greatest to lowest percent ("pct") or by factor order ("fct"). Defaults to "pct". (Note: if there are no factor levels set and "fct" is selected, data will arrange variable of choice in alphabetical order.)
 #'
-#' @return A tabyl.
+#' @return A data frame.
 #'
 #' @export
-frequency_table <- function(.data, frequency_variable, ordering) {
+frequency_table <- function(.data, frequency_variable, ordering = "pct") {
 
   if(!ordering %in% c("pct", "fct")) {
     stop("'ordering' argument must be one of: 'pct', 'fct")
   }
 
-  if(ordering == "pct"){
-  .data |>
+  n_respondents <- .data |>
     tidyr::drop_na({{ frequency_variable }}) |>
-    janitor::tabyl({{ frequency_variable }}) |>
-    dplyr::arrange(dplyr::desc(percent)) |>
-    janitor::adorn_pct_formatting(digits = 0,
-                         rounding = "half to even")
+    nrow()
+
+  df <- .data |>
+    dplyr::count({{ frequency_variable }}, .drop = FALSE) |>
+    dplyr::mutate(respondents = n_respondents) |>
+    dplyr::mutate(percent = n / respondents)
+
+  if(ordering == "pct"){
+  df |>
+      dplyr::arrange(dplyr::desc(percent)) |>
+      dplyr::mutate(percent = scales::percent(percent, accuracy = 1))
   }
 
   if(ordering == "fct"){
-    .data |>
-      tidyr::drop_na({{ frequency_variable }}) |>
-      janitor::tabyl({{ frequency_variable }}) |>
+    df |>
       dplyr::arrange({{ frequency_variable }}) |>
-      janitor::adorn_pct_formatting(digits = 0,
-                                    rounding = "half to even")
+      dplyr::mutate(percent = scales::percent(percent, accuracy = 1))
   }
 
 }
