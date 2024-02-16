@@ -1,6 +1,6 @@
 Package: ctlr
 Type: Package
-Title: cltr: Shortcuts for data cleaning, analysis, and visualization
+Title: ctlr: Shortcuts for data cleaning, analysis, and visualization
 Version: 0.1.7
 Author: Jay Cutler
 Maintainer: Jay Cutler <jacobmcutler@outlook.com>
