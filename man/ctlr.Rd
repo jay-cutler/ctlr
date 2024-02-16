@@ -4,10 +4,11 @@
 \name{ctlr}
 \alias{ctlr-package}
 \alias{ctlr}
-\title{Streamlined Cleaning, Analysis, and Visualization Tools}
+\title{cltr: Shortcuts for data cleaning, analysis, and visualization}
 \description{
-I'll ensure a longer description goes here eventually.
+This package utilizes functions from the {tidyverse} as well as {flextable}, {qualtRics}, and {boxr} to offer function "shortcuts" for simple data cleaning, wrangling similar types of survey data, visualizing data in tabular and graphical forms, and connecting and utilizing APIs.
 }
 \author{
-Jay Cutler \email{jacobmcutler@outlook.com}
+Jay Cutler
+\email{jacobmcutler@outlook.com}
 }
