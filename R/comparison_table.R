@@ -27,8 +27,6 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
     var_name <- new_name
   }
 
-  time_point_string <- deparse(substitute({{ time_point }}))
-
   if(data_format == "n_pct"){
     totals <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
@@ -49,7 +47,7 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
       dplyr::mutate(n_pct = paste(n, " (", pct, ")", sep = "")) |>
       dplyr::select(-c(n, pct)) |>
       dplyr::ungroup() |>
-      tidyr::pivot_wider(names_from = time_point_string,
+      tidyr::pivot_wider(names_from = {{ time_point }},
                          values_from = "n_pct") |>
       dplyr::arrange({{ comparison_variable }}) |>
       dplyr::bind_rows(totals)
@@ -73,7 +71,7 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
       dplyr::group_by({{ time_point }}) |>
       dplyr::count({{ comparison_variable }}) |>
       dplyr::ungroup() |>
-      tidyr::pivot_wider(names_from = time_point_string,
+      tidyr::pivot_wider(names_from = {{ time_point }},
                          values_from = "n") |>
       dplyr::arrange({{ comparison_variable }}) |>
       janitor::adorn_totals(where = "row")
