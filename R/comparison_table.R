@@ -27,17 +27,19 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
     var_name <- new_name
   }
 
+  time_point_var <- noquote(time_point)
+
   if(data_format == "n_pct"){
     totals <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
-      janitor::tabyl({{ comparison_variable }}, {{ time_point }}) |>
+      janitor::tabyl({{ comparison_variable }}, time_point_var) |>
       janitor::adorn_totals(where = "row") |>
       dplyr::filter({{ comparison_variable }} == "Total") |>
       dplyr::mutate(dplyr::across(-{{ comparison_variable }}, ~paste(.x, "(100%)", sep = " ")))
 
     table <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
-      dplyr::group_by({{ time_point }}) |>
+      dplyr::group_by(time_point_var) |>
       dplyr::count({{ comparison_variable }}) |>
       dplyr::mutate(pct = n/sum(n))  |>
       janitor::adorn_pct_formatting(digits = 0,
@@ -57,7 +59,7 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
 
     table <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
-      janitor::tabyl({{ comparison_variable }}, {{ time_point }}) |>
+      janitor::tabyl({{ comparison_variable }}, time_point_var) |>
       janitor::adorn_percentages(denominator = "col") |>
       janitor::adorn_pct_formatting(rounding = "half to even",
                            digits = 0) |>
@@ -68,7 +70,7 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
   if(data_format == "n"){
     table <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
-      dplyr::group_by({{ time_point }}) |>
+      dplyr::group_by(time_point_var) |>
       dplyr::count({{ comparison_variable }}) |>
       dplyr::ungroup() |>
       tidyr::pivot_wider(names_from = {{ time_point }},
