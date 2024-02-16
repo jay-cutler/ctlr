@@ -65,7 +65,7 @@ comparison_table <- function(.data, comparison_variable, new_name = NULL,
 
   }
 
-  if(data_format == "pct"){
+  if(data_format == "n"){
     table <- .data |>
       tidyr::drop_na({{ comparison_variable }}) |>
       dplyr::group_by({{ time_point }}) |>
