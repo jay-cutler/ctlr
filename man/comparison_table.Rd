@@ -8,7 +8,7 @@ comparison_table(
   .data,
   comparison_variable,
   new_name = NULL,
-  time_point = "fy",
+  time_point = fy,
   cap_times = TRUE,
   data_format = "n_pct"
 )
@@ -20,7 +20,7 @@ comparison_table(
 
 \item{new_name}{Final name to display for the left (variable) column in the table. If not entered, will default to a sentence case version of the `comparison_variable`.}
 
-\item{time_point}{Name of time point variable in dataset. Defaults to "fy".}
+\item{time_point}{Name of time point variable in dataset. Defaults to "fy" (without quotes).}
 
 \item{cap_times}{Do you want to force the time point columns to be renamed as all caps (T/F)? Defaults to TRUE.}
 
