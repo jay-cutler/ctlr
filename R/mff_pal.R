@@ -17,7 +17,7 @@ mff_pal <- function(palette = "Blue", reverse = FALSE) {
     "Orange" = c('#4b0000', '#6b0a00', '#842600', '#9e3d00', '#b95300', '#d56a00', '#f18100', '#ffa122', '#ffc54e'),
     "Green" = c('#081c00', '#1a3200', '#264c00', '#3d6500', '#587f00', '#749904', '#90b52d', '#add14a', '#caee66'),
     "Gradient" = c('#13334c', '#1a455c', '#24586a', '#326b76', '#447f7e', '#599381', '#72a77e', '#8dbc70', '#acd049'),
-    "Diverging" = c('#005f6c', '#038895', '#35b1be', '#6ddbe7', '#f5f5f5', '#fcbf67', '#e68b1e', '#c25b01', '#963200'),
+    "Diverging" = c('#005f6c', '#038895', '#35b1be', '#6ddbe7', '#eeeeee', '#fcbf67', '#e68b1e', '#c25b01', '#963200'),
     "DivergingEven" = c('#005f6c', '#038895', '#35b1be', '#6ddbe7', '#fcbf67', '#e68b1e', '#c25b01', '#963200'))
 
   pal <- mff_palettes[[palette]]
