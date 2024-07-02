@@ -1,7 +1,7 @@
 Package: ctlr
 Type: Package
 Title: ctlr: Shortcuts for data cleaning, analysis, and visualization
-Version: 0.2.0
+Version: 0.2.1
 Author: Jay Cutler
 Maintainer: Jay Cutler <jacobmcutler@outlook.com>
 Description: This package utilizes functions from the {tidyverse} as well as {flextable}, {qualtRics}, and {boxr} to offer function "shortcuts" for simple data cleaning, wrangling similar types of survey data, visualizing data in tabular and graphical forms, and connecting and utilizing APIs.
@@ -25,6 +25,6 @@ Imports:
     systemfonts,
     tibble,
     tidyr
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     devtools

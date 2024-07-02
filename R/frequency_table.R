@@ -12,7 +12,7 @@
 frequency_table <- function(.data, frequency_variable, ordering = "pct") {
 
   if(!ordering %in% c("pct", "fct")) {
-    stop("'ordering' argument must be one of: 'pct', 'fct")
+    stop("'ordering' argument must be one of: 'pct', 'fct'")
   }
 
   n_respondents <- .data |>
@@ -20,20 +20,23 @@ frequency_table <- function(.data, frequency_variable, ordering = "pct") {
     nrow()
 
   df <- .data |>
+    tidyr::drop_na({{ frequency_variable }}) |>
     dplyr::count({{ frequency_variable }}, .drop = FALSE) |>
-    dplyr::mutate(respondents = n_respondents) |>
-    dplyr::mutate(percent = n / respondents)
+    dplyr::mutate(pct = n / n_respondents)
 
-  if(ordering == "pct"){
-  df |>
-      dplyr::arrange(dplyr::desc(percent)) |>
-      dplyr::mutate(percent = scales::percent(percent, accuracy = 1))
+  if (ordering == "pct") {
+    output <-
+      df |>
+      dplyr::arrange(dplyr::desc(pct)) |>
+      dplyr::mutate(pct = scales::percent(pct, accuracy = 1))
   }
 
-  if(ordering == "fct"){
-    df |>
+  if (ordering == "fct") {
+    output <-
+      df |>
       dplyr::arrange({{ frequency_variable }}) |>
-      dplyr::mutate(percent = scales::percent(percent, accuracy = 1))
+      dplyr::mutate(pct = scales::percent(pct, accuracy = 1))
   }
 
+  return(output)
 }

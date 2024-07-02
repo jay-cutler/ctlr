@@ -9,4 +9,4 @@ utils::globalVariables(c("totals", "table", "n_rows", "n_vars", "var_name", "cap
 utils::globalVariables("Total")
 
 # frequency_table
-utils::globalVariables("percent")
+utils::globalVariables(c("df", "output"))
